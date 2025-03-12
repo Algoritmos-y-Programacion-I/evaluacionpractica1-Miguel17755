@@ -20,7 +20,6 @@ public class Guacamaya {
      * pos: l Scanner reader queda inicializado
     */
     public static void inicializarGlobales() {
-
         reader = new Scanner(System.in);
 
     }
@@ -31,15 +30,11 @@ public class Guacamaya {
      * pre: El arreglo precios debe estar inicializado
     */
     public static void menu() {
-
         System.out.println("Bienvenido a Guacamaya!");
-
-        establecerCantidadVendida();
-
         boolean salir = false;
-
+        establecerCantidadVendida();
+        
         do {
-
             System.out.println("\nMenu Principal:");
             System.out.println("1. Solicitar precios ($) y cantidades de cada referencia de producto vendida en el dia");
             System.out.println("2. Calcular la cantidad total de unidades vendidas en el dia");
@@ -52,7 +47,7 @@ public class Guacamaya {
 
             switch (opcion) {
                 case 1:
-                    solicitarDatos();
+                solicitarDatos();
                     break;
                 case 2:
                     System.out.println("\nLa cantidad total de unidades vendidas en el dia fue de: "+calcularTotalUnidadesVendidas());
@@ -82,6 +77,7 @@ public class Guacamaya {
         } while (!salir);
 
     }
+    
 
     /**
      * Descripcion: Este metodo se encarga de preguntar al usuario el numero de referencias de producto diferentes 
@@ -91,8 +87,6 @@ public class Guacamaya {
      * pos: Los arreglos precios y unidades quedan inicializados
      */
     public static void establecerCantidadVendida() {
-
-        System.out.println("\nDigite el numero de referencias de producto diferentes vendidas en el dia ");
         int referencias = reader.nextInt();
 
         precios = new double[referencias];
@@ -101,11 +95,22 @@ public class Guacamaya {
     }
 
     public static void solicitarDatos(){
-
+        System.out.println("Digite la cantidad del producto que se vendio hoy: ");
+        for(int i = 0; i < unidades.length; i++){
+            unidades[i] = reader.nextInt();
+            System.out.println("Ahora digite el precio ");
+            for(i = 0; i<precios.length; i++){
+                precios[i] = reader.nextDouble();
+            }
+        }
      
     }
 
     public static int calcularTotalUnidadesVendidas(){
+        System.out.println("La cantidad total de las unidades vendidas fue de: ");
+        for(int i = 0; i<unidades.length; i++){
+            System.out.println(unidades[i]*precios[i]);
+        }
 
         return 0;
 
@@ -118,9 +123,13 @@ public class Guacamaya {
     }
 
     public static double calcularVentasTotales(){
-
-        return 0;
-
+        
+        return calcularVentasTotales;
+        for(int i = 0; i < unidades.length; i++){
+            unidades[i] = reader.nextInt();
+            System.out.println("Ahora digite el precio ");
+            for(i = 0; i<precios.length; i++){
+                precios[i] = reader.nextDouble();
     }
 
     public static int consultarReferenciasSobreLimite(double limite){
